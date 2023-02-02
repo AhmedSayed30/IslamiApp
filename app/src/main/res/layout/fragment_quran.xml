@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/quran_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="59dp"
+        android:src="@drawable/quran_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/border_top"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#B7935F"
+        app:layout_constraintTop_toBottomOf="@id/quran_logo" />
+
+    <View
+        android:id="@+id/border_bottom"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="2dp"
+        android:background="#B7935F"
+        app:layout_constraintTop_toBottomOf="@id/tv_sura_name" />
+
+    <View
+        android:id="@+id/border_vertcal"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
+        android:background="#B7935F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/border_top" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/quran_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/border_bottom"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/tv_sura_name"
+        android:layout_width="203dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/sura_name"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@id/border_vertcal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/border_top" />
+
+    <TextView
+        android:id="@+id/tv_sura_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/num_of_ayat"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/border_vertcal"
+        app:layout_constraintTop_toBottomOf="@id/border_top"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
