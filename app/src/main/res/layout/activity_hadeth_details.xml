@@ -7,7 +7,7 @@
     android:background="@drawable/main_bg"
     tools:context=".SuraDetailsActivity">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar_quran"
+        android:id="@+id/tool_bar_hadeth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/quran"
+                android:text="Hadeth"
                 style="@style/lines_color"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -40,37 +40,37 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/sura_content_bg"
-            app:layout_constraintWidth_percent=".8"
-            app:layout_constraintHeight_percent=".9"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tool_bar_quran">
-            <TextView
-                android:id="@+id/sura_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                style="@style/hider_color"
-                app:layout_constraintStart_toStartOf="@id/sura_content_recycler_view"
-                app:layout_constraintEnd_toEndOf="@id/sura_content_recycler_view"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/sura_content_recycler_view"/>
-            <View
-                android:id="@+id/border_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginVertical="12dp"
-                style="@style/border"
-                android:layout_marginHorizontal="12dp"
-                app:layout_constraintTop_toBottomOf="@id/sura_name" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/sura_content_bg"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintHeight_percent=".9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tool_bar_hadeth">
+        <TextView
+            android:id="@+id/hadeth_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            style="@style/hider_color"
+            app:layout_constraintStart_toStartOf="@id/hadeth_content_recycler_view"
+            app:layout_constraintEnd_toEndOf="@id/hadeth_content_recycler_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/hadeth_content_recycler_view"/>
+        <View
+            android:id="@+id/border_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginVertical="12dp"
+            style="@style/border"
+            android:layout_marginHorizontal="12dp"
+            app:layout_constraintTop_toBottomOf="@id/hadeth_name" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/sura_content_recycler_view"
+            android:id="@+id/hadeth_content_recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
@@ -79,7 +79,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

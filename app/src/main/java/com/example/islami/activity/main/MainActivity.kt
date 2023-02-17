@@ -2,6 +2,7 @@ package com.example.islami.activity.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.example.islami.R
 import com.example.islami.databinding.ActivityMainBinding
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
         binding.btnNavigationView.selectedItemId = R.id.quran
+        switchModeLogic()
     }
 
     private fun showFragment(fragment: Fragment) {
@@ -33,6 +35,16 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(R.id.container_fragment, fragment)
             .commit()
+    }
+
+    private fun switchModeLogic(){
+        binding.btnSwitchModw.setOnClickListener{
+            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+        }
     }
 
 }

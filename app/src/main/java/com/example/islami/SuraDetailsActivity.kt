@@ -20,6 +20,10 @@ class SuraDetailsActivity : AppCompatActivity() {
         suraPosition = intent.getIntExtra(Constants.EXTRA_SURA_POSITION,-1)
         binding.suraContentRecyclerView.adapter = adapter
         readFileText()
+        binding.backArrow.setOnClickListener{
+            finish()
+        }
+        binding.suraName.text = suraName
     }
     fun readFileText() {
         val fileName = "${suraPosition?.plus(1)}.txt"

@@ -20,4 +20,28 @@
         <item name="backgroundTint">@color/gold</item>
     </style>
 
+    <style name="sura_content_style" parent="Theme.Islami">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="lines_color" parent="Theme.Islami">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="border" parent="Theme.Islami">
+        <item name="android:background">@color/gold</item>
+    </style>
+
+    <style name="hider_color" parent="Theme.Islami">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="mode" parent="Theme.Islami">
+        <item name="tint">@color/gold</item>
+    </style>
+
+    <style name="arrow" parent="Theme.Islami">
+        <item name="tint">@color/black</item>
+    </style>
+
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">اسلمي</string>
+    <string name="hider_name">اسلامي</string>
     <string name="quran">قران</string>
     <string name="hadeth">حديث</string>
     <string name="sebha">سبحة</string>

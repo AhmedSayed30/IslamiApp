@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.islami.R
 import com.example.islami.SuraDetailsActivity
 import com.example.islami.adapter.Constants
-import com.example.islami.adapter.SuraContentAdapter
 import com.example.islami.adapter.SurasNameAdapter
 import com.example.islami.callbacks.OnSuraClickListener
 
@@ -140,7 +138,7 @@ class QuranFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var adapter : SurasNameAdapter = SurasNameAdapter(ArSuras)
+        var adapter = SurasNameAdapter(ArSuras)
         var quranRecyclerView: RecyclerView = view.findViewById(R.id.quran_recycler_view)
         quranRecyclerView.adapter = adapter
         adapter.onSuraClickListener = object : OnSuraClickListener {

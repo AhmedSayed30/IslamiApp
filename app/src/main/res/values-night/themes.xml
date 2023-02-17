@@ -16,9 +16,32 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="lines_color" parent="Theme.Islami">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="btn_navigation_style" parent="Theme.Islami">
         <item name="backgroundTint">@color/darkBlue</item>
     </style>
 
+    <style name="sura_content_style" parent="Theme.Islami">
+        <item name="android:textColor">@color/lightGold</item>
+    </style>
+
+    <style name="border" parent="Theme.Islami">
+        <item name="android:background">@color/lightGold</item>
+    </style>
+
+    <style name="hider_color" parent="Theme.Islami">
+        <item name="android:textColor">@color/lightGold</item>
+    </style>
+
+    <style name="mode" parent="Theme.Islami">
+        <item name="tint">#1F2742</item>
+    </style>
+
+    <style name="arrow" parent="Theme.Islami">
+        <item name="tint">@color/white</item>
+    </style>
 
 </resources>

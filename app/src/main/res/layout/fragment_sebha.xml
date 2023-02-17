@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="@layout/activity_main">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_head_sebha"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="25dp"
+        android:scaleType="center"
+        android:src="@drawable/head_sebha"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_sebha"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="-26dp"
+        android:src="@drawable/body_sebha"
+        app:layout_constraintTop_toBottomOf="@id/iv_head_sebha"
+        app:layout_constraintStart_toStartOf="@id/iv_head_sebha"
+        app:layout_constraintEnd_toEndOf="@id/iv_head_sebha"/>
+
+    <TextView
+        android:id="@+id/counter_txr_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        style="@style/lines_color"
+        android:text="عدد التسبيحات"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_sebha"/>
+
+    <TextView
+        android:id="@+id/tv_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        style="@style/lines_color"
+        android:text="0"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:background="@drawable/sura_content_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/counter_txr_rv"/>
+
+    <!--<TextView
+        android:id="@+id/phase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
