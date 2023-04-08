@@ -45,19 +45,38 @@
         android:id="@+id/tv_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         style="@style/lines_color"
         android:text="0"
         android:textSize="25sp"
         android:gravity="center"
-        android:background="@drawable/sura_content_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/counter_txr_rv"/>
-
-    <!--<TextView
-        android:id="@+id/phase"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        app:layout_constraintBottom_toBottomOf="@id/bg"/>
+    <ImageView
+        android:id="@+id/bg"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>-->
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_counter_bg"
+        style="@style/contaner_bg"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/counter_txr_rv"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/tathbih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ic_btn_bg"
+        android:gravity="center"
+        android:text="سبحان الله"
+        style="@style/bottom_color"
+        app:layout_constraintTop_toBottomOf="@id/bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

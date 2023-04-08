@@ -17,6 +17,7 @@ class HadethDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHadethDetailsBinding
     var hadethName: String? = null
+    var hadethcontent: String? = null
     @RequiresApi(33)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class HadethDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
         hadethName = intent.getStringExtra(Constants.EXTRA_HADETH_NAME_KEY)
         Log.i(TAG,intent.getParcelableArrayExtra("content", Hadeth::class.java).toString())
-        //binding.hadethContentRecyclerView.adapter = HadethContentAdabter(allAhadeth)
+        binding.hadethContentRecyclerView.adapter = HadethContentAdabter(hadethcontent)
         binding.backArrow.setOnClickListener {
             finish()
         }

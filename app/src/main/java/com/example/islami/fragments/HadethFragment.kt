@@ -39,7 +39,7 @@ class HadethFragment : Fragment() {
             override fun onHadethClick(hadethName: String?) {
                 val intent = Intent(requireActivity(), HadethDetailsActivity::class.java)
                 intent.putExtra(Constants.EXTRA_HADETH_NAME_KEY,hadethName)
-                intent.putExtra("content",allAhadeth)
+                intent.putExtra("content",hadethName)
                 startActivity(intent)
             }
 

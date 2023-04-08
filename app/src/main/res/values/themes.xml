@@ -44,4 +44,11 @@
         <item name="tint">@color/black</item>
     </style>
 
+    <style name="contaner_bg" parent="Theme.Islami">
+        <item name="android:tint">@color/gold</item>
+    </style>
+
+    <style name="bottom_color" parent="Theme.Islami">
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
