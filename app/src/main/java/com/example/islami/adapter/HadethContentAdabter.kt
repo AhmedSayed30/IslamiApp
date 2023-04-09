@@ -24,11 +24,11 @@ class HadethContentAdabter(var item : String?)
     }
 
     override fun onBindViewHolder(holder: ViexHolder, position: Int) {
-        holder.viewBinding.hadethLineText.text = item?.get(position).toString()
+        holder.viewBinding.hadethLineText.text = item.toString()
     }
 
     override fun getItemCount(): Int {
-        return 0
+        return 1
     }
     fun updata(hadethLines: String?){
         this.item=hadethLines
