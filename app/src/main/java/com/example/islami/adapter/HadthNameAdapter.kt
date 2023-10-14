@@ -14,9 +14,7 @@ class HadthNameAdapter(val item : List<Hadeth>)
     var onHadethClickListener : OnHadethClickListener?=null
 
     class ViewHolder(val viewBinding : HadethItemNameBinding)
-        : RecyclerView.ViewHolder(viewBinding.root){
-
-    }
+        : RecyclerView.ViewHolder(viewBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewBinding = HadethItemNameBinding.inflate(
@@ -33,7 +31,7 @@ class HadthNameAdapter(val item : List<Hadeth>)
                     visibility = View.GONE
         }
         holder.itemView.setOnClickListener{
-            onHadethClickListener?.onHadethClick(item[position].title)
+            onHadethClickListener?.onHadethClick(item[position])
         }
     }
 

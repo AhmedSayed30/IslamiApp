@@ -24,7 +24,7 @@ class HadethFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHadethBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -35,14 +35,12 @@ class HadethFragment : Fragment() {
         val adapter = HadthNameAdapter(allAhadeth)
         binding.hadethRecyclerView.adapter = adapter
         adapter.onHadethClickListener = object : OnHadethClickListener {
-
-            override fun onHadethClick(hadethName: String?) {
+            override fun onHadethClick(hadeth: Hadeth) {
                 val intent = Intent(requireActivity(), HadethDetailsActivity::class.java)
-                intent.putExtra(Constants.EXTRA_HADETH_NAME_KEY,hadethName)
-                intent.putExtra("content",hadethName)
+                intent.putExtra(Constants.EXTRA_HADETH_NAME_KEY,hadeth.title)
+                intent.putExtra("content",hadeth.content)
                 startActivity(intent)
             }
-
         }
     }
 

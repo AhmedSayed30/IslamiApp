@@ -1,5 +1,7 @@
 package com.example.islami.callbacks
 
+import com.example.islami.adapter.Hadeth
+
 interface OnHadethClickListener {
-    fun onHadethClick(hadethName : String?)
+    fun onHadethClick(hadethName : Hadeth)
 }
