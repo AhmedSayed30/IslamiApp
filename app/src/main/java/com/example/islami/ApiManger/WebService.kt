@@ -7,5 +7,6 @@ import retrofit2.http.GET
 
 interface WebService {
     @GET("radios")
+    //"radios/radio_arabic.json"
     fun getRadioChannels():Call<Response>
 }
