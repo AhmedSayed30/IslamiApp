@@ -11,7 +11,7 @@ import com.example.islami.databinding.HadethItemNameBinding
 
 class HadthNameAdapter(val item : List<Hadeth>)
     : RecyclerView.Adapter<HadthNameAdapter.ViewHolder>() {
-    var onHadethClickListener : OnHadethClickListener?=null
+        var onHadethClickListener : OnHadethClickListener?=null
 
     class ViewHolder(val viewBinding : HadethItemNameBinding)
         : RecyclerView.ViewHolder(viewBinding.root)
