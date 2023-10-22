@@ -6,14 +6,15 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Binder
 import android.os.IBinder
+import android.util.Log
 
 class PlayerService:Service() {
+    private val TAG = "PlayerService"
     var mp = MediaPlayer()
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val urlToPlay = intent?.getStringExtra("url")
         val name = intent?.getStringExtra("name")
         val action = intent?.getStringExtra("action")
-        return super.onStartCommand(intent, flags, startId)
         if (urlToPlay!=null && name != null)
             startMediaPlayer(urlToPlay,name)
         if (action != null){
@@ -26,12 +27,11 @@ class PlayerService:Service() {
         return START_NOT_STICKY
     }
 
-    private fun stopMediaPlayer() {
+    fun stopMediaPlayer() {
         if (mp.isPlaying){
             mp.stop()
             mp.reset()
         }
-
     }
 
     var name : String = ""
@@ -48,11 +48,18 @@ class PlayerService:Service() {
     public fun startMediaPlayer(urlToPlay: String, name: String) {
         pauseMediaPlayer()
         this.name=name
-        mp.setDataSource(this, Uri.parse(urlToPlay))
-        mp.prepareAsync()
-        mp.setOnPreparedListener {
-            it.start()
+        Log.e(TAG,urlToPlay)
+        try {
+            mp.setDataSource(this, Uri.parse(urlToPlay))
+            mp.prepareAsync()
+            mp.setOnPreparedListener {
+                it.start()
+            }
+        }catch (ex:Exception){
+            Log.e(TAG,ex.message.toString())
         }
+
+
     }
 
      fun pauseMediaPlayer() {

@@ -28,7 +28,7 @@
         tools:text="ازايه القران الكريم" />
 
     <ImageView
-        android:id="@id/ic_play"
+        android:id="@+id/ic_controler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
@@ -44,7 +44,7 @@
         android:layout_marginTop="55dp"
         android:src="@drawable/ic_skip_next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ic_play"
+        app:layout_constraintStart_toEndOf="@id/ic_controler"
         app:layout_constraintTop_toBottomOf="@id/radio_name" />
 
     <ImageView
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:src="@drawable/ic_skip_previous"
-        app:layout_constraintEnd_toStartOf="@+id/ic_play"
+        app:layout_constraintEnd_toStartOf="@+id/ic_controler"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/radio_name" />

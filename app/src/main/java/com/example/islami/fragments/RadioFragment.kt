@@ -21,41 +21,62 @@ import retrofit2.Call
 import retrofit2.Callback
 
 class RadioFragment : Fragment() {
-    private lateinit var binding : FragmentRadioBinding
+    private lateinit var binding: FragmentRadioBinding
+    private lateinit var items: List<RadiosItem>
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRadioBinding.inflate(inflater,container,false)
+        binding = FragmentRadioBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getChannelFromApi()
+        getChannelsFromApi()
+        binding.icControler.setOnClickListener { controlarRadio(items) }
+        binding.icNext.setOnClickListener {
+            getNextChannal()
+        }
     }
 
-    private fun getChannelFromApi() {
-        ApiManger.getWebService().getRadioChannels().enqueue(object : Callback<Response>{
+    private fun getNextChannal() {
+        TODO("Not yet implemented")
+    }
+
+    private fun getChannelsFromApi() {
+        ApiManger.getWebService().getRadioChannels().enqueue(object : Callback<Response> {
             override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
-                val channel = response.body()?.radios
-                controlarRadio(channel)
+                val channels = response.body()?.radios
+                if (!channels.isNullOrEmpty()) {
+                    items = channels as List<RadiosItem>
+                }
+
             }
 
             override fun onFailure(call: Call<Response>, t: Throwable) {
-                Toast.makeText(activity,t.localizedMessage,Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, t.localizedMessage, Toast.LENGTH_LONG).show()
             }
 
         })
     }
 
-    private fun controlarRadio(channel: List<RadiosItem?>?) {
-        binding.radioName.setText(channel?.get(0)?.name ?: "")
-        binding.icPlay.setOnClickListener(View.OnClickListener {
-            channel?.get(0)?.let { it1 -> startRadioService(it1) }
-        })
+    /* private fun handler(var index:Int): RadiosItem? {
+         if (index > items.size){
+             index = 0
+         }
+         val item = items.get(index)
+         return item
+     }*/
 
+    private fun controlarRadio(channel: List<RadiosItem>) {
+        if (bound) {
+            startRadioService(channel.get(0))
+        } else {
+            stopRadioService()
+        }
+        bound = !bound
     }
 
     override fun onStart() {
@@ -65,12 +86,12 @@ class RadioFragment : Fragment() {
     }
 
     private fun bindService() {
-        val intent = Intent(activity,PlayerService::class.java)
-        activity?.bindService(intent,connection,Context.BIND_AUTO_CREATE)
+        val intent = Intent(activity, PlayerService::class.java)
+        activity?.bindService(intent, connection, Context.BIND_AUTO_CREATE)
     }
 
     private fun startSevice() {
-        val intent = Intent(requireActivity(),PlayerService::class.java)
+        val intent = Intent(requireActivity(), PlayerService::class.java)
         activity?.startService(intent)
     }
 
@@ -78,18 +99,25 @@ class RadioFragment : Fragment() {
         super.onStop()
         activity?.unbindService(connection)
     }
-    fun startRadioService(item:RadiosItem){
+
+    fun startRadioService(item: RadiosItem) {
         if (bound)
-            service.startMediaPlayer(item.url!!,item.name!!)
+            service.startMediaPlayer(item.url!!, item.name!!)
+        binding.radioName.setText(item.name)
+        binding.icControler.setImageResource(R.drawable.ic_pause)
     }
 
-    fun stopRadioService(){
-        if (bound)
-            service.pauseMediaPlayer()
+    fun stopRadioService() {
+        if (bound) {
+            service.stopMediaPlayer()
+        }
+        binding.icControler.setImageResource(R.drawable.ic_play)
+
     }
+
     lateinit var service: PlayerService
     var bound = false
-    private val connection = object :ServiceConnection{
+    private val connection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, mbinder: IBinder?) {
             val binder = mbinder as PlayerService.MyBinder
             service = binder.getService()
