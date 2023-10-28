@@ -23,11 +23,12 @@ import retrofit2.Callback
 class RadioFragment : Fragment() {
     private lateinit var binding: FragmentRadioBinding
     private lateinit var items: List<RadiosItem>
+    var position = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRadioBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,14 +36,26 @@ class RadioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getChannelsFromApi()
-        binding.icControler.setOnClickListener { controlarRadio(items) }
+        binding.icControler.setOnClickListener { startRadio(position) }
         binding.icNext.setOnClickListener {
             getNextChannal()
         }
+        binding.icPrevious.setOnClickListener {
+            getPreviousChannal()
+        }
+    }
+
+    private fun getPreviousChannal() {
+        if (position <= 0) position = items.size - 1
+        else position--
+        startRadioService(items[position])
     }
 
     private fun getNextChannal() {
-        TODO("Not yet implemented")
+        if (position == items.size - 1) position = 0
+        else position++
+
+        startRadioService(items[position])
     }
 
     private fun getChannelsFromApi() {
@@ -62,17 +75,9 @@ class RadioFragment : Fragment() {
         })
     }
 
-    /* private fun handler(var index:Int): RadiosItem? {
-         if (index > items.size){
-             index = 0
-         }
-         val item = items.get(index)
-         return item
-     }*/
-
-    private fun controlarRadio(channel: List<RadiosItem>) {
+    private fun startRadio(position: Int) {
         if (bound) {
-            startRadioService(channel.get(0))
+            startRadioService(items[position])
         } else {
             stopRadioService()
         }
@@ -101,16 +106,13 @@ class RadioFragment : Fragment() {
     }
 
     fun startRadioService(item: RadiosItem) {
-        if (bound)
-            service.startMediaPlayer(item.url!!, item.name!!)
+        service.startMediaPlayer(item.url!!, item.name!!)
         binding.radioName.setText(item.name)
         binding.icControler.setImageResource(R.drawable.ic_pause)
     }
 
     fun stopRadioService() {
-        if (bound) {
-            service.stopMediaPlayer()
-        }
+        service.stopMediaPlayer()
         binding.icControler.setImageResource(R.drawable.ic_play)
 
     }

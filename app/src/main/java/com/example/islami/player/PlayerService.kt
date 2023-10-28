@@ -49,17 +49,14 @@ class PlayerService:Service() {
         pauseMediaPlayer()
         this.name=name
         Log.e(TAG,urlToPlay)
-        try {
-            mp.setDataSource(this, Uri.parse(urlToPlay))
-            mp.prepareAsync()
+        mp.reset()
+        mp.setDataSource(this@PlayerService, Uri.parse(urlToPlay))
+        mp.prepareAsync()
             mp.setOnPreparedListener {
+                it.seekTo(0)
+                Log.i(TAG,"prepareAsync")
                 it.start()
             }
-        }catch (ex:Exception){
-            Log.e(TAG,ex.message.toString())
-        }
-
-
     }
 
      fun pauseMediaPlayer() {
